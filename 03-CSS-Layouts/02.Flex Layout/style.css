@@ -1,0 +1,278 @@
+/*
+Priority--
+1. !important
+2. inline style
+3. ID(#) selector
+4. class(.) selector
+5. element(<>) selector
+7. <body> selector
+6. Universal(*) selector
+*/
+
+/* properties applied to all elements */
+/* GLOBAL RESET*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* properties related to text mostly gets inherited */
+body {
+  font-family: sans-serif;
+  color: #444;
+  border-top: 10px solid #1098ad;
+  position: relative;
+}
+
+/* Centering all content */
+.container {
+  width: 1200px;
+  /* margin-left: auto;
+  margin-right: auto; */
+  margin: 0 auto; /*top-bottom left-right*/
+}
+
+.main-header {
+  background-color: #f7f7f7;
+  padding: 20px 40px;
+  margin-bottom: 60px;
+}
+
+nav {
+  font-size: 18px;
+  text-align: center;
+}
+
+/* paddings and margins are applied 
+only horiontally in inline elements */
+
+nav a:link {
+  display: inline-block; /* causes no line b reaks */
+  margin-right: 30px;
+}
+
+nav a:link:last-child {
+  margin-right: 0;
+}
+
+article {
+  margin-bottom: 60px;
+}
+
+.post-header {
+  margin-bottom: 40px;
+}
+
+aside {
+  background-color: #f7f7f7;
+  border-top: 5px solid #1098ad;
+  border-bottom: 5px solid #1098ad;
+  padding: 50px 40px;
+}
+
+/* Combining Selectors */
+h1,
+h2,
+h3 {
+  color: #1098ad;
+}
+
+h1 {
+  font-size: 26px;
+  text-transform: uppercase;
+  font-style: italic;
+}
+
+/* pseudo elements */
+h1::first-letter {
+  font-style: normal;
+  margin-right: 5px;
+}
+
+h2 {
+  font-size: 40px;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+/* By default psuedo elements are inline elements */
+h2::after {
+  content: "TOP";
+  background-color: #ffe71e;
+  color: #444;
+  font-size: 16px;
+  font-weight: bold;
+  display: inline-block;
+  padding: 5px 10px;
+  position: absolute;
+  top: -10px;
+  right: -25px;
+}
+
+p {
+  font-size: 22px;
+  line-height: 1.5;
+  margin-bottom: 15px; /* collapsing margin */
+}
+
+h3 {
+  font-size: 30px;
+  margin-bottom: 20px;
+  margin-top: 40px; /* collapsing margin */
+}
+
+/* adjacent sibling selector */
+/* h3 + p::first-line {
+  color: red;
+} */
+
+h4 {
+  font-family: 20px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+ul,
+ol {
+  margin-left: 50px;
+  margin-bottom: 20px;
+}
+
+li {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+/* pseudo classes */
+li:last-child {
+  margin-bottom: 0;
+}
+/* footer p {
+  font-size: 16px;
+} */
+
+/*article header p {
+  font-style: italic;
+}*/
+
+#author {
+  font-style: italic;
+  font-size: 18px;
+}
+
+#copyright {
+  font-size: 16px;
+}
+
+/* misconception */
+article p:first-child {
+  color: red;
+}
+
+/* this targets actual link with href */
+/*maintain LVHA order*/
+a:link {
+  color: #1098ad;
+  text-decoration: none;
+}
+a:visited {
+  color: #1098ad;
+}
+
+a:hover {
+  color: orangered;
+  font-weight: bold;
+  text-decoration: underline orangered;
+}
+
+a:active {
+  background-color: black;
+  font-style: italic;
+}
+
+/* image section */
+.post-img {
+  width: 100%;
+  height: auto;
+}
+
+button {
+  font-size: 22px;
+  padding: 15px;
+  cursor: pointer;
+  position: absolute;
+  /* top: 0;
+  left: 0; */
+  bottom: 50px;
+  right: 50px;
+}
+
+/* Refactor old code for flexbox */
+.author {
+  margin-bottom: 0;
+  margin-left: 15px;
+}
+
+.related {
+  list-style: none;
+  margin-left: 0;
+}
+
+.related-post {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.related-link:link {
+  font-size: 17px;
+  font-weight: bold;
+  font-style: normal;
+  display: block; /* in inline elements margin top or bottom do not apply */
+  margin-bottom: 5px;
+}
+
+.related-author {
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: italic;
+}
+
+/* FLEX CONCEPT */
+.main-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.author-box {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.row {
+  display: flex;
+  gap: 75px;
+  margin-bottom: 60px;
+  align-items: flex-start;
+}
+
+article {
+  flex: 1; /* automatic space configuration */
+  margin-bottom: 0;
+}
+
+aside {
+  /*
+   DEFAULT VALUES
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: auto;
+   */
+  flex: 0 0 300px;
+}
